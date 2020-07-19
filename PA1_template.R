@@ -11,10 +11,10 @@ library(dplyr)
 
 ## Attaching package: 'dplyr'
 ## The following objects are masked from 'package:stats':
- 
+
 ##     filter, lag
 ## The following objects are masked from 'package:base':
- 
+
 ##     intersect, setdiff, setequal, union
 databydate <- stepdata %>% select(date, steps) %>% group_by(date) %>% summarize(tsteps= sum(steps)) %>%na.omit()
 hist(databydate$tsteps, xlab = "Total daily Steps",main="Histogram of Total Steps by day", breaks = 20)
@@ -135,8 +135,8 @@ meandataweekendweekday <- aggregate(meandata$steps , by= list(meandata$weekend, 
 names(meandataweekendweekday) <- c("weekend", "interval", "steps")
 
 ggplot(meandataweekendweekday, aes(x=interval, y=steps, color=weekend)) + geom_line()+
-facet_grid(weekend ~.) + xlab("Interval") + ylab("Mean of Steps") +
-    ggtitle("Comparison of Average Number of Steps in Each Interval")
+  facet_grid(weekend ~.) + xlab("Interval") + ylab("Mean of Steps") +
+  ggtitle("Comparison of Average Number of Steps in Each Interval")
 
 
 
